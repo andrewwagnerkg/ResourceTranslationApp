@@ -1,10 +1,12 @@
 ﻿using System.Reflection;
 using Application.Interfaces;
+using Core.Entities.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Persistence
 {
-    public class ApplicationDBContext : DbContext, IApplicationDBContext
+    public class ApplicationDBContext : IdentityDbContext<User, Role, Guid, UserClaim, UserRole, UserLogin, RoleClaim, UserToken>, IApplicationDBContext
     {
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options):base(options) { }
 
