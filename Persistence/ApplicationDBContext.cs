@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using Application.Interfaces;
+using Core.Entities;
 using Core.Entities.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -15,5 +16,7 @@ namespace Persistence
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             base.OnModelCreating(modelBuilder);
         }
+
+        public DbSet<Locale> Locales { get; set; }
     }
 }

@@ -18,7 +18,7 @@ namespace Persistence
             });
             services.AddScoped<IApplicationDBContext>(provider => provider.GetService<ApplicationDBContext>());
 
-            services.AddAutoMigrate();
+            //services.AddAutoMigrate();
 
             await services.AddInfrastructure(configuration);
 
