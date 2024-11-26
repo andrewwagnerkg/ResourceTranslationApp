@@ -7,6 +7,7 @@ namespace Application.Interfaces
     {
         Task<int> SaveChangesAsync(CancellationToken cancelationToken);
 
-        DbSet<Locale> Locales { get; }
+        DbSet<Locale> Locales { get; set; }
+        DbSet<Resource> Resources { get; set; }
     }
 }
