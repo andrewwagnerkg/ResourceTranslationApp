@@ -8,6 +8,7 @@ namespace Persistence.EntityTypeConfigurations
     {
         public void Configure(EntityTypeBuilder<Translation> builder)
         {
+            builder.ToTable("Translations");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).HasDefaultValueSql("NEWID()")
                 .ValueGeneratedOnAdd();

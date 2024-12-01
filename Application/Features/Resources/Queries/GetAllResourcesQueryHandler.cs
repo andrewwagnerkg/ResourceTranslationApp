@@ -16,7 +16,7 @@ namespace Application.Features.Resources.Queries
             => (_dbContext, _mapper) = (dbContext, mapper);
 
         public async Task<IEnumerable<ResourceDto>> Handle(GetAllResourcesQuery request, CancellationToken cancellationToken)
-            => await _dbContext.Resources.ProjectTo<ResourceDto>(_mapper.ConfigurationProvider).ToListAsync();
+            => await _dbContext.Resources.AsNoTracking().ProjectTo<ResourceDto>(_mapper.ConfigurationProvider).ToListAsync();
         
     }
 }

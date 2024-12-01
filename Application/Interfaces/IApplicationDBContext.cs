@@ -9,5 +9,6 @@ namespace Application.Interfaces
 
         DbSet<Locale> Locales { get; set; }
         DbSet<Resource> Resources { get; set; }
+        DbSet<Translation> Translations { get; set; }
     }
 }

@@ -19,5 +19,6 @@ namespace Persistence
 
         public DbSet<Locale> Locales { get; set; }
         public DbSet<Resource> Resources { get; set; }
+        public DbSet<Translation> Translations { get; set; }
     }
 }

@@ -1,27 +1,31 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Application.Features.Translations.Commands;
+using Application.Features.Translations.Dtos;
+using Application.Features.Translations.Queries;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ResourceTranslationApp.Controllers
 {
     public class TranslationController : BaseController
     {
         [HttpGet]
-        public async Task<IEnumerable<TranslationDto>> GetAll([FromQuery] GetAllTranslationsQuery query)
-        => await Mediator.Send(query);
+        [Route("")]
+        public async Task<IEnumerable<TranslationDto>> GetAll([FromQuery] GetAllTranslationsQuery query) 
+            => await Mediator.Send(query);
 
         [HttpPost]
+        [Route("")]
         public async Task<Guid> Create(CreateTranslationCommand command)
             => await Mediator.Send(command);
 
         [HttpDelete]
-        public async Task<ActionResult> Delete([FromQuery]DeleteTranslationCommand command)
+        [Route("")]
+        public async Task<Unit> Delete(DeleteTranslationCommand command)
             => await Mediator.Send(command);
 
         [HttpPatch]
-        public async Task<ActionResult> Update(UpdateTranslationCommand command)
+        [Route("")]
+        public async Task<TranslationDto> Update(UpdateTranslationCommand command)
             => await Mediator.Send(command);
-
-        [HttpGet]
-        public async Task<TranslationDto> Get([FromQuery]GetTranslationQuery query)
-            => await Mediator.Send(query);
     }
 }
