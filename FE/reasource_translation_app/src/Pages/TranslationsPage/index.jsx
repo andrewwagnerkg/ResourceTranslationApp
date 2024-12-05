@@ -1,4 +1,4 @@
-function TransalationsPage() {
+function TranslationsPage() {
     return  (
         <>
             TransalationsPage
@@ -6,4 +6,4 @@ function TransalationsPage() {
     )
 }
 
-export default TransalationsPage;
+export default TranslationsPage;
