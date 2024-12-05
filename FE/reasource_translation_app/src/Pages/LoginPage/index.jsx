@@ -12,11 +12,11 @@ function LoginPage() {
         signOut();
     })
 
-    function onSubmit(e){
+    async function onSubmit(e){
         e.preventDefault();
         if(login && password)
         {
-            signIn(login, password);
+            await signIn(login, password);
             if(checkAuth())
             {
                 navigate('/dashboard');
