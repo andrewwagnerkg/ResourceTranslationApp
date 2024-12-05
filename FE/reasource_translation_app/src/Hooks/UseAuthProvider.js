@@ -11,7 +11,7 @@ export const useAuthProvider = ()=>{
     function signIn(login, password)
     {
         //api login
-        setValue('api.OK.result');
+        setValue(`${login}:${password}`);
     }
 
     function signOut()
