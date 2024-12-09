@@ -1,51 +1,85 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useAuthProvider} from "../../Hooks/UseAuthProvider.js";
 import {useNavigate} from "react-router";
+import {
+    Alert,
+    Button,
+    Card,
+    CardBody,
+    Container,
+    Form,
+    FormLabel,
+    InputGroup,
+    Nav,
+    Navbar,
+    Stack
+} from "react-bootstrap";
 
 function LoginPage() {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const {signIn, checkAuth, signOut} = useAuthProvider();
     const navigate = useNavigate();
+    const [showError, setShowError] = useState(false);
+    const [showErrorMessage, setShowErrorMessage] = useState('');
 
     useEffect(() => {
         signOut();
     })
 
+    async function onAvailableResponse()
+    {
+        if(checkAuth())
+        {
+            navigate('/dashboard');
+        }
+    }
+
+    function onFaildResponse(err)
+    {
+        setShowError(true);
+        setShowErrorMessage(err.message);
+    }
+
     async function onSubmit(e){
         e.preventDefault();
+        setShowError(false);
         if(login && password)
         {
-            await signIn(login, password);
-            if(checkAuth())
-            {
-                navigate('/dashboard');
-            }
-            else
-            {
-                console.log('login failed');
-            }
+            await signIn(login, password, onAvailableResponse, onFaildResponse);
         }
     }
 
     return (
         <>
-            <header>
-                Resources APP
-            </header>
-        <form onSubmit={onSubmit}>
-            <div>
-                <label htmlFor="login">Login</label>
-                <input id="login" type="text" placeholder="login" onChange={(e) => setLogin(e.target.value)}
-                       value={login}/>
-            </div>
-            <div>
-                <label htmlFor="password">Password</label>
-                <input id="password" type="password" placeholder="Password"
-                       onChange={(e) => setPassword(e.target.value)} value={password}/>
-            </div>
-            <button type="submit">Login</button>
-        </form>
+            <Navbar bg="primary" data-bs-theme="dark">
+                <Container>
+                    <Navbar.Brand>Resources App</Navbar.Brand>
+                </Container>
+            </Navbar>
+
+            <Stack gap={2} className="col-md-5 mx-auto vh-100 justify-content-center">
+                {showError && <Alert variant="danger" dismissible>{showErrorMessage}</Alert>}
+
+                <Card>
+                    <CardBody>
+                        <Form onSubmit={onSubmit}>
+                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                <Form.Label htmlFor="login">Login</Form.Label>
+                                <Form.Control id="login" type="text" placeholder="login" onChange={(e) => setLogin(e.target.value)}
+                                              value={login} />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                <Form.Label htmlFor="password">Password</Form.Label>
+                                <Form.Control id="password" type="password" placeholder="Password"
+                                              onChange={(e) => setPassword(e.target.value)} value={password}/>
+                            </Form.Group>
+                            <Button variant="primary" type="submit">Login</Button>
+                        </Form>
+                    </CardBody>
+                </Card>
+
+            </Stack>
         </>
     )
 }

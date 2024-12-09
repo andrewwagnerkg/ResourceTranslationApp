@@ -18,15 +18,9 @@ export const useAuthProvider = ()=>{
         }
     }
 
-    function onfaildResponse(err)
+    async function signIn(login, password, onAvailableResponseExternal, onFailResponse)
     {
-        console.error(err.error);
-    }
-
-    async function signIn(login, password)
-    {
-        await Login(login, password, onAvailableResponse, onfaildResponse);
-        console.log("request");
+        await Login(login, password, async (res) => {await onAvailableResponse(res); await onAvailableResponseExternal()}, onFailResponse);
     }
 
     function signOut()

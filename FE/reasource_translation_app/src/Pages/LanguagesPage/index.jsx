@@ -1,7 +1,7 @@
 function ResourcesPage() {
     return (
         <>
-            LanguagesPage
+            Language
         </>
     )
 }
