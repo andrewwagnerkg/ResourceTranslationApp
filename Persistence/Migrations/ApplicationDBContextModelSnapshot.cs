@@ -239,7 +239,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Locales");
+                    b.ToTable("Locales", (string)null);
                 });
 
             modelBuilder.Entity("Core.Entities.Resource", b =>
@@ -264,7 +264,7 @@ namespace Persistence.Migrations
                         .IsUnique()
                         .HasDatabaseName("IX_UniqueResource");
 
-                    b.ToTable("Resources");
+                    b.ToTable("Resources", (string)null);
                 });
 
             modelBuilder.Entity("Core.Entities.Translation", b =>

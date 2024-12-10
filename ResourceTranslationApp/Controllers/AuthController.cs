@@ -1,5 +1,4 @@
 ﻿using Application.Features.Autheticate.Queries;
-using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
