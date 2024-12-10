@@ -64,13 +64,13 @@ function LoginPage() {
                 <Card>
                     <CardBody>
                         <Form onSubmit={onSubmit}>
-                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                <Form.Label htmlFor="login">Login</Form.Label>
+                            <Form.Group className="mb-3">
+                                <Form.Label>Login</Form.Label>
                                 <Form.Control id="login" type="text" placeholder="login" onChange={(e) => setLogin(e.target.value)}
                                               value={login} />
                             </Form.Group>
-                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                <Form.Label htmlFor="password">Password</Form.Label>
+                            <Form.Group className="mb-3">
+                                <Form.Label>Password</Form.Label>
                                 <Form.Control id="password" type="password" placeholder="Password"
                                               onChange={(e) => setPassword(e.target.value)} value={password}/>
                             </Form.Group>

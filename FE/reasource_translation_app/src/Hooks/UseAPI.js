@@ -6,6 +6,10 @@ export const useAPI = ()=>{
     const Login = async (userName, password, onAvailableResponse, onfaildResponse)=> {
         await Post(`/Auth/Authenticate?username=${userName}&password=${password}`,{}, onAvailableResponse, onfaildResponse);
     }
+    const GetResources = async (onAvailableResponse, onfailedResponse)=> {
+        await Get(`/Locale/GetAllLocales`, onAvailableResponse, onfailedResponse);
+    }
 
-    return {Login}
+
+    return {Login, GetResources}
 }

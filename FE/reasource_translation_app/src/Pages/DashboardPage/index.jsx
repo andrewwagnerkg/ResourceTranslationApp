@@ -8,13 +8,13 @@ function DashboardPage() {
                 <Container>
                     <Navbar.Brand>Resources Dashboard</Navbar.Brand>
                     <Nav className="me-auto">
-                        <Nav.Link><NavLink to="" className="link-light">Resources</NavLink></Nav.Link>
-                        <Nav.Link><NavLink to="languages" className="link-light">Languages</NavLink></Nav.Link>
-                            <Nav.Link><NavLink to="translations" className="link-light">Transalations</NavLink></Nav.Link>
+                        <NavLink to="" className="link-light nav-link">Resources</NavLink>
+                        <NavLink to="languages" className="link-light nav-link">Languages</NavLink>
+                            <NavLink to="translations" className="link-light nav-link">Transalations</NavLink>
                     </Nav>
                     <Navbar.Toggle />
                     <Navbar.Collapse className="justify-content-end">
-                        <Nav.Link><NavLink to="/logout" className="link-light">Logout</NavLink></Nav.Link>
+                        <NavLink to="/logout" className="link-light nav-link">Logout</NavLink>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
