@@ -3,7 +3,7 @@ import {useAsyncValue} from "react-router";
 
 export const useAxios = ()=>{
     const api = axios.create({
-        baseURL:'https://localhost:7007/api',
+        baseURL:'https://localhost:5001/api',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + localStorage.getItem('jwt'),
