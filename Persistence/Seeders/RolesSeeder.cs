@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Persistence.Seeders
 {
-    public class RolesSeeder : BaseSeeder
+    public class RolesSeeder : ISeeder
     {
         private readonly RoleManager<Role> _roleManager;
 
@@ -14,7 +14,7 @@ namespace Persistence.Seeders
             _roleManager = roleManager ?? throw new ArgumentException(nameof(roleManager));
         }
 
-        public override async Task Seed()
+        public async Task Seed()
         {
             foreach (var item in EnumExtensions.ToEnumerable<Roles>())
             {

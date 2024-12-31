@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Persistence.Seeders
 {
-    public class ClaimsSeeder : BaseSeeder
+    public class ClaimsSeeder : ISeeder
     {
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<Role> _roleManager;
@@ -16,7 +16,7 @@ namespace Persistence.Seeders
             _roleManager = roleManager ?? throw new ArgumentException(nameof(roleManager));
         }
 
-        public async override Task Seed()
+        public async Task Seed()
         {
             var user = await _userManager.FindByNameAsync(Roles.SA.ToString());
             if (user == null) throw new Exception("User not created");

@@ -19,13 +19,15 @@ namespace Application.Features.Translations.Handlers
             CancellationToken cancellationToken)
         {
             var query = _dbContext.Translations
+                .Include(x=>x.Locale)
+                .Include(x=>x.Resource)
                 .AsNoTracking()
                 .AsQueryable();
             if(request.ResourceId.HasValue)
                 query = query.Where(x=>x.ResourceId == request.ResourceId);
             if(request.LocaleId.HasValue)
                 query = query.Where(x=>x.LocaleId == request.LocaleId);
-          return query.ProjectTo<TranslationDto>(_mapper.ConfigurationProvider);
+            return await query.ProjectTo<TranslationDto>(_mapper.ConfigurationProvider).ToListAsync();
         }
     }
 }

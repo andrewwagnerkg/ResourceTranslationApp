@@ -8,7 +8,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Persistence.Seeders
 {
-    public class UserSeeder : BaseSeeder
+    public class UserSeeder : ISeeder
     {
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<Role> _roleManager;
@@ -21,7 +21,7 @@ namespace Persistence.Seeders
             _configuration = configuration ?? throw new ArgumentException(nameof(configuration));
         }
 
-        public async override Task Seed()
+        public async Task Seed()
         {
             var sa = new User
             {
