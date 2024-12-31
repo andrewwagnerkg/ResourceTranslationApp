@@ -19,7 +19,9 @@ function DashboardPage() {
                 </Container>
             </Navbar>
             <div className="vh-100">
-                <Outlet/>
+                <Container>
+                    <Outlet/>
+                </Container>
             </div>
         </>
     )

@@ -58,28 +58,31 @@ function LoginPage() {
                 </Container>
             </Navbar>
 
-            <Stack gap={2} className="col-md-5 mx-auto vh-100 justify-content-center">
-                {showError && <Alert variant="danger" dismissible>{showErrorMessage}</Alert>}
+            <Container>
+                <Stack gap={2} className="col-md-5 mx-auto vh-100 justify-content-center">
+                    {showError && <Alert variant="danger" dismissible>{showErrorMessage}</Alert>}
 
-                <Card>
-                    <CardBody>
-                        <Form onSubmit={onSubmit}>
-                            <Form.Group className="mb-3">
-                                <Form.Label>Login</Form.Label>
-                                <Form.Control id="login" type="text" placeholder="login" onChange={(e) => setLogin(e.target.value)}
-                                              value={login} />
-                            </Form.Group>
-                            <Form.Group className="mb-3">
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control id="password" type="password" placeholder="Password"
-                                              onChange={(e) => setPassword(e.target.value)} value={password}/>
-                            </Form.Group>
-                            <Button variant="primary" type="submit">Login</Button>
-                        </Form>
-                    </CardBody>
-                </Card>
+                    <Card>
+                        <CardBody>
+                            <Form onSubmit={onSubmit}>
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Login</Form.Label>
+                                    <Form.Control id="login" type="text" placeholder="login" onChange={(e) => setLogin(e.target.value)}
+                                                  value={login} />
+                                </Form.Group>
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Password</Form.Label>
+                                    <Form.Control id="password" type="password" placeholder="Password"
+                                                  onChange={(e) => setPassword(e.target.value)} value={password}/>
+                                </Form.Group>
+                                <Button variant="primary" type="submit">Login</Button>
+                            </Form>
+                        </CardBody>
+                    </Card>
 
-            </Stack>
+                </Stack>
+            </Container>
+
         </>
     )
 }

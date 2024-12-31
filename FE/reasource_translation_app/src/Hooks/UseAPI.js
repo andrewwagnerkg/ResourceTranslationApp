@@ -10,6 +10,10 @@ export const useAPI = ()=>{
         await Get(`/Locale/GetAllLocales`, onAvailableResponse, onfailedResponse);
     }
 
+    const AddLanguage = async (language, onAvailableResponse, onfailedResponse)=> {
+        await Post(`/Locale/CreateLocale`, {"Code":language.Code, "Name":language.Name}, onAvailableResponse, onfailedResponse);
+    }
 
-    return {Login, GetLocales}
+
+    return {Login, GetLocales, AddLanguage}
 }
