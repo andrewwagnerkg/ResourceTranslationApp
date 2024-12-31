@@ -4,11 +4,12 @@ import {Col, FormControl, Row, Table} from "react-bootstrap";
 import {LoadingButton} from "../../Components/LoadingButton.jsx";
 
 function LanguagesPage() {
-const {GetLocales, AddLanguage} = useAPI();
+const {GetLocales, AddLanguage, DeleteLanguage} = useAPI();
 const [locales, setLocales] = useState([]);
 const [languageName, setLanguageName] = useState('');
 const [languageCode, setLanguageCode] = useState('');
 const [addLoading, setAddLoading] = useState(false);
+const [deleteLoading, setDeleteLoading] = useState(false);
 const [addLanguageAvailable, setLanguageAvailable] = useState({});
 const [requestStatus, setRequestStatus] = useState('');
 const [reqestType, setRequestType] = useState('add');
@@ -66,6 +67,22 @@ const [reqestType, setRequestType] = useState('add');
         }
     }
 
+    const onDeletedLanguageAvailable = async (res) => {
+        setDeleteLoading(false);
+        setLanguageAvailable(res);
+    }
+
+    const onDeletedLanguageError = async (res) => {
+        setDeleteLoading(false);
+        setRequestStatus(`Error ${res}`);
+    }
+
+    const deleteLanguage = async (id) => {
+        setDeleteLoading(true);
+        console.log(id);
+        DeleteLanguage(id, onDeletedLanguageAvailable, onDeletedLanguageError);
+    }
+
     return (
         <>
             <Row className="p-2">
@@ -101,8 +118,8 @@ const [reqestType, setRequestType] = useState('add');
                         <td className="col-4">{x.code}</td>
                         <td className="text-center col-3">
                             <Row>
-                                {/*<Col><LoadingButton text = "Edit" isLoading = {loading} variant = "warning" onClick = {()=>setLoading(!loading)}/></Col>*/}
-                                {/*<Col><LoadingButton text = "Delete" isLoading = {loading} variant = "danger" onClick = {()=>setLoading(!loading)}/></Col>*/}
+                                {/*<Col><LoadingButton text = "Edit" isLoading = {deleteLoading} variant = "warning" onClick = {()=>setLoading(!loading)}/></Col>*/}
+                                <Col><LoadingButton text = "Delete" isLoading = {deleteLoading} variant = "danger" onClick = {async ()=>await deleteLanguage(x.id)}/></Col>
                             </Row>
                         </td>
                     </tr>))}

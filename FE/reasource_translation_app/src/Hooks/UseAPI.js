@@ -10,10 +10,14 @@ export const useAPI = ()=>{
         await Get(`/Locale/GetAllLocales`, onAvailableResponse, onfailedResponse);
     }
 
-    const AddLanguage = async (language, onAvailableResponse, onfailedResponse)=> {
-        await Post(`/Locale/CreateLocale`, {"Code":language.Code, "Name":language.Name}, onAvailableResponse, onfailedResponse);
+    const AddLanguage = async (languageModel, onAvailableResponse, onfailedResponse)=> {
+        await Post(`/Locale/CreateLocale`, {"Code":languageModel.Code, "Name":languageModel.Name}, onAvailableResponse, onfailedResponse);
+    }
+
+    const DeleteLanguage = async (languageId, onAvailableResponse, onfailedResponse)=> {
+        await Delete(`/Locale/DeleteLocale/?id=${languageId}`, {}, onAvailableResponse, onfailedResponse);
     }
 
 
-    return {Login, GetLocales, AddLanguage}
+    return {Login, GetLocales, AddLanguage, DeleteLanguage}
 }
